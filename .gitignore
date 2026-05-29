@@ -1,1 +1,2 @@
 /target
+git rm -r --cached target/
