@@ -1,4 +1,3 @@
-
 // fn main(){
 //     struct User {
 //         username:String,
@@ -44,4 +43,49 @@
 // fn area(rectangle: &Rectangle)->u64{
 //     rectangle.width * rectangle.length
 // }
+ #[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    length: u32,
+}
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.length
+    }
 
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+     fn can_hold(&self, other:&Rectangle)->bool{
+        self.width>other.width && self.length>other.length
+     }
+     fn square(size:u32) -> Self{
+        Self{
+            width:size,
+            length:size
+        }
+     }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        length: 60,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        length: 50,
+    };
+    let rect3 = Rectangle {
+        width: 70,
+        length: 90,
+    };
+    let _sq = Rectangle::square(5);
+
+    if rect1.width() {
+        println!("The Area of the Rectangle is {}", rect1.area());
+        println!("Rec1 can hold rect2:{}", rect1.can_hold(&rect2));
+        println!("Rec1 can hold rect3:{}", rect1.can_hold(&rect3));
+
+    }
+}
